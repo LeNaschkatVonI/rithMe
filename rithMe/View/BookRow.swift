@@ -8,25 +8,33 @@
 import SwiftUI
 
 struct BookRow: View {
-    let title: String
-    let author: String
+    let book: Book
     var body: some View {
-        let book = Book.Image(title: title.capitalized, author: author.capitalized)
-        HStack(spacing: 0) {
-            book
-            VStack(alignment: .leading, spacing: 10) {
-                Text(book.title)
-                    .font(.title2)
-                Text(book.author)
-                    .font(.title2)
-                    .foregroundColor(.secondary)
-            }.padding()
+        NavigationLink (
+            destination: DetailView(book: book)) {
+            BookLink(book: book)
         }
     }
 }
 
 struct BookRow_Previews: PreviewProvider {
     static var previews: some View {
-        BookRow(title: "title", author: "author")
+        BookRow(book: Book())
+    }
+}
+
+struct BookLink: View {
+    let book: Book
+    var body: some View {
+        HStack(spacing: 0) {
+            Book.Image(title: book.title, size: 80)
+            VStack(alignment: .leading, spacing: 10) {
+                Text(book.title)
+                    .font(Settings.BookFonts.Title)
+                Text(book.author)
+                    .font(Settings.BookFonts.Author)
+                    .foregroundColor(.secondary)
+            }.padding()
+        }
     }
 }

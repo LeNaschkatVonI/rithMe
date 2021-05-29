@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    var library = LibraryStorage()
+    @State private var addNewBook: Bool = false
     var body: some View {
-        List(0..<5) { item in
-            BookRow(title: "maxim\(item)", author: "god")
+        NavigationView {
+            List(0..<library.sortedBooks.count) { item in
+                BookRow(book: library.sortedBooks[item])
+            }.navigationBarTitle("iBooks")
         }
     }
 }

@@ -12,7 +12,7 @@ struct Book {
     let title: String
     let description: String?
     
-    init(title: String = "Title", author: String = "Author" , description: String = "") {
+    init(title: String = "Title", author: String = "Author" , description: String = "some description") {
         self.title = title
         self.author = author
         self.description = description
