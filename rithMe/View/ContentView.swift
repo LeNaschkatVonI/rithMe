@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(0..<5) { item in
+            BookRow(title: "maxim\(item)", author: "god")
+        }
     }
 }
 
@@ -19,3 +20,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
