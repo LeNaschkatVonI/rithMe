@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    var library = LibraryStorage()
-    @State private var addNewBook: Bool = false
+    @State var library = LibraryStorage()
     var body: some View {
         NavigationView {
-            List(0..<library.sortedBooks.count) { item in
-                BookRow(book: library.sortedBooks[item])
+            List {
+                ForEach(library.sortedBooks) { item in
+                    BookRow(book: item, image: $library.uiImages[item])
+            }
             }.navigationBarTitle("iBooks")
         }
     }
@@ -21,7 +22,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().previewedAllColorSchemes
     }
 }
 

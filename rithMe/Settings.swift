@@ -13,4 +13,7 @@ enum Settings {
         static let Author: Font = .title2
         static let Description: Font = .title3
     }
+    enum MagicNumbers {
+        static let CornerRadius: CGFloat = 20.0
+    }
 }

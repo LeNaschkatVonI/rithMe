@@ -10,6 +10,7 @@
 		893406852662C6750081DBC2 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893406842662C6750081DBC2 /* Library.swift */; };
 		893406872662CA6E0081DBC2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893406862662CA6E0081DBC2 /* DetailView.swift */; };
 		8934068B2662EFE70081DBC2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934068A2662EFE70081DBC2 /* Settings.swift */; };
+		8934068D2662F6DF0081DBC2 /* PHPickerViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934068C2662F6DF0081DBC2 /* PHPickerViewController.View.swift */; };
 		896DCE892660BBAE00BFA33C /* rithMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896DCE882660BBAE00BFA33C /* rithMeApp.swift */; };
 		896DCE8B2660BBAE00BFA33C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896DCE8A2660BBAE00BFA33C /* ContentView.swift */; };
 		896DCE8D2660BBAF00BFA33C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 896DCE8C2660BBAF00BFA33C /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		893406842662C6750081DBC2 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		893406862662CA6E0081DBC2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		8934068A2662EFE70081DBC2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8934068C2662F6DF0081DBC2 /* PHPickerViewController.View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHPickerViewController.View.swift; sourceTree = "<group>"; };
 		896DCE852660BBAE00BFA33C /* rithMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rithMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		896DCE882660BBAE00BFA33C /* rithMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rithMeApp.swift; sourceTree = "<group>"; };
 		896DCE8A2660BBAE00BFA33C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				896DCE8A2660BBAE00BFA33C /* ContentView.swift */,
 				896DCE9A26616CD600BFA33C /* BookView.swift */,
 				896DCE9C266178AF00BFA33C /* BookRow.swift */,
+				8934068C2662F6DF0081DBC2 /* PHPickerViewController.View.swift */,
 				893406862662CA6E0081DBC2 /* DetailView.swift */,
 			);
 			path = View;
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8934068D2662F6DF0081DBC2 /* PHPickerViewController.View.swift in Sources */,
 				896DCE8B2660BBAE00BFA33C /* ContentView.swift in Sources */,
 				896DCE9D266178AF00BFA33C /* BookRow.swift in Sources */,
 				8934068B2662EFE70081DBC2 /* Settings.swift in Sources */,
