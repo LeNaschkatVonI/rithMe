@@ -10,13 +10,13 @@ import Combine
 
 class Book: ObservableObject {
     
-    var author: String
-    var title: String
-    var description: String?
+    @Published var author: String
+    @Published var title: String
+    @Published var description: String?
     @Published var microReview: String
     @Published var readMe: Bool
     
-    init(title: String = "Title", author: String = "Author" , description: String = "some description", microReview: String = "", readMe: Bool = true) {
+    init(title: String = "", author: String = "" , description: String = "", microReview: String = "", readMe: Bool = true) {
         self.title = title
         self.author = author
         self.description = description

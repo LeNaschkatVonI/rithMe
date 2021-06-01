@@ -16,8 +16,8 @@ extension View {
 }
 
 struct addNewBookView: View {
-    @State var book: Book
-    @State var showingImagePicker: Bool
+    @ObservedObject var book = Book.init()
+    @State var showingImagePicker: Bool = false
     @State var image: UIImage?
     var body: some View {
         VStack {

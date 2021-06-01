@@ -20,7 +20,6 @@ struct LibraryStorage {
         Book(title: "swift", author: "apple", description: "programming language"),
         Book(title: "figma guide", author: "eu citizen", description: "UI guidebook"),
         Book(title: "mobile development", author: "world", description: "guidelines to develop mobile apps", microReview: "awesome"),
-        Book()
     ]
     
     var uiImages: [Book: UIImage] = [:]

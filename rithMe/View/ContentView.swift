@@ -24,6 +24,9 @@ struct ContentView: View {
                     }
                     .font(Settings.BookFonts.Title)
                 }).buttonStyle(BorderlessButtonStyle())
+                .sheet(isPresented: $addNewBook, content: {
+                    addNewBookView()
+                })
                 ForEach(library.sortedBooks) { item in
                     BookRow(book: item, image: $library.uiImages[item])
             }

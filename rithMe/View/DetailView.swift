@@ -16,25 +16,9 @@ struct DetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                HStack(spacing: 16) {
-                    BookmarkButton(book: book)
-                    VStack {
-                        Text(book.title.capitalized)
-                            .font(Settings.BookFonts.Title)
-                            .bold()
-                        Text(book.author.capitalized)
-                            .font(Settings.BookFonts.Author)
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Button(action: {
-                        showingReviewSheet.toggle()
-                    }, label: {
-                        Text("Edit review")
-                    })
-                }
-                Divider()
-                    .padding(.vertical)
+                titleAndAuthor(book: book, showingReviewSheet: $showingReviewSheet)
+                customDivider
+                VStack {
                 Book.Image(title: book.title, uiImage: image)
                 
                 HStack(alignment: .center) {
@@ -53,19 +37,17 @@ struct DetailView: View {
                     }
                 }.padding()
                 if showingReviewSheet {
-                    Divider()
-                        .padding(.vertical)
+                    customDivider
                     Section(header: Text("Write your review right below")) {
                         TextField("review", text: $book.microReview)
                             .foregroundColor(.secondary)
                     }
                 } else {
-                    Divider()
-                        .padding(.vertical)
+                   customDivider
                     Text(book.microReview)
                 }
-                Divider()
-                    .padding(.vertical)
+                }
+                customDivider
                 Text(book.description?.capitalized ?? "This book still have no description")
                     .font(Settings.BookFonts.Description)
                 Spacer()
@@ -84,5 +66,29 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(book: Book(), image: .constant(nil))
             .previewedAllColorSchemes
+    }
+}
+
+struct titleAndAuthor: View {
+    @ObservedObject var book: Book
+    @Binding var showingReviewSheet: Bool
+    var body: some View {
+        HStack(spacing: 16) {
+            BookmarkButton(book: book)
+            VStack {
+                Text(book.title.capitalized)
+                    .font(Settings.BookFonts.Title)
+                    .bold()
+                Text(book.author.capitalized)
+                    .font(Settings.BookFonts.Author)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Button(action: {
+                showingReviewSheet.toggle()
+            }, label: {
+                Text("Edit review")
+            })
+        }
     }
 }
