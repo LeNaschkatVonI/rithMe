@@ -10,9 +10,9 @@ import Combine
 
 class Book: ObservableObject {
     
-    let author: String
-    let title: String
-    let description: String?
+    var author: String
+    var title: String
+    var description: String?
     @Published var microReview: String
     @Published var readMe: Bool
     
