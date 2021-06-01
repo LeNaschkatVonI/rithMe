@@ -12,6 +12,7 @@ struct rithMeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(LibraryStorage())
         }
     }
 }

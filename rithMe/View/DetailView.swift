@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var book: Book
-    @Binding var image: UIImage?
+    @EnvironmentObject var library: LibraryStorage
     @State private var showingImagePicker = false
     @State private var showingAlert = false
     @State private var showingReviewSheet = false
@@ -19,7 +19,7 @@ struct DetailView: View {
                 titleAndAuthor(book: book, showingReviewSheet: $showingReviewSheet)
                 customDivider
                 VStack {
-                Book.Image(title: book.title, uiImage: image)
+                    Book.Image(title: book.title, uiImage: library.uiImages[book])
                 
                 HStack(alignment: .center) {
                     Button(action: {
@@ -27,7 +27,7 @@ struct DetailView: View {
                     }, label: {
                         Text("Upload image")
                     })
-                    if image != nil {
+                    if library.uiImages[book] != nil {
                         Spacer()
                         Button(action: {
                             showingAlert.toggle()
@@ -38,10 +38,8 @@ struct DetailView: View {
                 }.padding()
                 if showingReviewSheet {
                     customDivider
-                    Section(header: Text("Write your review right below")) {
                         TextField("review", text: $book.microReview)
                             .foregroundColor(.secondary)
-                    }
                 } else {
                    customDivider
                     Text(book.microReview)
@@ -53,10 +51,10 @@ struct DetailView: View {
                 Spacer()
             }.padding()
             .sheet(isPresented: $showingImagePicker) {
-                PHPickerViewController.View(image: $image)
+                PHPickerViewController.View(image: $library.uiImages[book])
             }
             .alert(isPresented: $showingAlert, content: {
-                Alert(title: .init("delete image for \(book.title)"), primaryButton: Alert.Button.destructive(Text("delete"), action: { image = nil}), secondaryButton: .cancel())
+                Alert(title: .init("delete image for \(book.title)"), primaryButton: Alert.Button.destructive(Text("delete"), action: { library.uiImages[book] = nil}), secondaryButton: .cancel())
             })
         }
     }
@@ -64,7 +62,8 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(book: Book(), image: .constant(nil))
+        DetailView(book: Book())
+        .environmentObject(LibraryStorage())
             .previewedAllColorSchemes
     }
 }

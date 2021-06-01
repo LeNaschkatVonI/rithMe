@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var library = LibraryStorage()
+    @EnvironmentObject var library: LibraryStorage
     @State private var addNewBook: Bool = false
     var body: some View {
         NavigationView {
@@ -25,12 +25,40 @@ struct ContentView: View {
                     .font(Settings.BookFonts.Title)
                 }).buttonStyle(BorderlessButtonStyle())
                 .sheet(isPresented: $addNewBook, content: {
-                    addNewBookView()
+                    addNewBookView.init()
                 })
-                ForEach(library.sortedBooks) { item in
-                    BookRow(book: item, image: $library.uiImages[item])
-            }
+                ForEach(Section.allCases, id: \.self) {
+                    SectionView(section: $0)
+                }
             }.navigationBarTitle("iBooks")
+        }
+    }
+}
+
+private struct SectionView: View {
+    let section: Section
+    var title: String {
+        switch section{
+        case .readMe:
+            return "read me"
+        case .finished:
+            return "finished"
+        }
+    }
+    @EnvironmentObject var library: LibraryStorage
+    var body: some View {
+        if let books = library.manuallySortedBooks[section] {
+            SwiftUI.Section(header: HStack(alignment: .center) {
+                Image(systemName: "book")
+                Text(title)
+                    .font(.system(size: 30))
+            }
+            .foregroundColor(.accentColor)
+            ) {
+                ForEach(books) {
+                    BookRow(book: $0)
+                }
+            }
         }
     }
 }
@@ -38,6 +66,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().previewedAllColorSchemes
+            .environmentObject(LibraryStorage())
     }
 }
 
