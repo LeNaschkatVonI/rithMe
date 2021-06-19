@@ -71,17 +71,21 @@ struct DetailView_Previews: PreviewProvider {
 struct titleAndAuthor: View {
     @ObservedObject var book: Book
     @Binding var showingReviewSheet: Bool
+    fileprivate func extractedFunc() -> VStack<TupleView<(Text, Text)>> {
+        return VStack {
+            Text(book.title.capitalized)
+                .font(Settings.BookFonts.Title)
+                .bold()
+            Text(book.author.capitalized)
+                .font(Settings.BookFonts.Author)
+                .foregroundColor(.secondary)
+        }
+    }
+    
     var body: some View {
         HStack(spacing: 16) {
             BookmarkButton(book: book)
-            VStack {
-                Text(book.title.capitalized)
-                    .font(Settings.BookFonts.Title)
-                    .bold()
-                Text(book.author.capitalized)
-                    .font(Settings.BookFonts.Author)
-                    .foregroundColor(.secondary)
-            }
+            extractedFunc()
             Spacer()
             Button(action: {
                 showingReviewSheet.toggle()
